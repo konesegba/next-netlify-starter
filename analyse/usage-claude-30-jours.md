@@ -67,37 +67,71 @@ les gens qui commentent « guide » ne reçoivent plus rien.
 
 Effet secondaire : jusqu'à **4 h de latence** entre le commentaire et la réponse.
 
-### La séquence Brevo (7 emails, 11/08 → 24/08)
+### La séquence Brevo — l'automatisation existe, mais elle ne part pas
 
-| | |
+**Correction d'une première version de ce document**, qui affirmait qu'aucune automatisation
+n'avait été construite. C'est faux : Brevo contient l'**Automatisation #4**, créée le 08/08,
+**Active** depuis le 24/08 à 10 h 07, avec ses 7 templates d'emails (`Automatisation #4_step_#2`
+à `_step_#14`), dont un « Bienvenue ! Je peux te poser 2 questions ? » en première étape.
+Le workflow a bien été monté, et il est allumé.
+
+**Mais il n'a jamais envoyé un seul email.**
+
+| Vérification | Résultat |
 |---|---|
-| Format | 7 campagnes **classiques** (envois ponctuels), pas une automatisation |
-| Cibles | listes 4 « IA 40+ » (58), 7 « 6 Prompts en Or » (11), 10 « mon diagnostic ia » (554) |
-| Ouvertures uniques (liste 10) | 72 sur l'email 1 (≈ 20 %) → 53 sur l'email 7 (≈ 12 %) |
-| Clics uniques, les 7 emails cumulés | **≈ 12** |
-| Liste 11 « VSL CHATGPT 4 SEMAINES » | **0 inscrit** — tunnel préparé, jamais branché |
+| Contact inscrit le 07/07 | 7 emails reçus, tous rattachés aux campagnes classiques 12–20 — aucun venant du workflow |
+| 4 contacts arrivés après le 24/08 (dont un du 24/08 17 h 25) | statistiques **totalement vides** |
+| Campagnes de type `trigger` | **0** |
+| Marketing Automation sur le compte | activé, clé de tracking présente |
+| Crédits d'envoi restants (07/08 → 07/09) | 6 415 |
 
-**Le problème.** Une campagne classique part une fois, à une date fixe, vers les gens déjà
-présents. **Toute personne inscrite après le 24 août n'a reçu aucun des 7 emails.**
-Le scénario Make capte des leads → ils atterrissent dans une liste où il ne se passe
-plus rien. Le contenu est écrit, testé, envoyé — et il ne travaille plus.
+**La cause la plus probable : le point d'entrée surveille une liste qui ne reçoit plus personne.**
 
----
+| Liste | Dernier contact entré | Nouveaux depuis le 24/08 |
+|---|---|---|
+| 4 — IA 40+ (58) | 14 août | **0** |
+| 7 — 6 Prompts en Or (11) | 30 juillet | **0** |
+| 11 — VSL CHATGPT 4 SEMAINES | jamais | **0** |
+| 10 — mon diagnostic ia (554) | aujourd'hui, 07 h 42 | **97** |
+
+La totalité du trafic entrant arrive dans la **liste 10**, à raison de 5 à 6 leads par jour.
+Si l'entrée du workflow pointe vers la liste 4, 7 ou 11, aucun contact n'y est éligible
+depuis son activation : workflow actif, zéro envoi. Le symptôme colle exactement.
+
+Deuxième candidat, même famille : une condition d'entrée basée sur le double opt-in ou sur un
+attribut. Les attributs `DOUBLE_OPT-IN`, `OPT_IN`, `NIVEAU_IA`, `ATTENTE_IA` et `SITUATION`
+existent dans le compte mais **ne sont pas renseignés** sur les contacts récents (le contact
+613 n'a que PRENOM, SMS et WHATSAPP). Toute condition d'entrée assise dessus exclut 100 %
+des nouveaux leads.
+
+**Pourquoi l'erreur était invisible :** les 7 campagnes classiques sont parties du 11 au 24 août
+avec de vraies ouvertures (≈ 20 % au premier email, ≈ 12 % au septième, ≈ 12 clics uniques au
+total). Des emails sortaient, les stats bougeaient — exactement ce que produit une automatisation
+qui marche. Les broadcasts ont masqué le silence du workflow.
+
+**Le coût :** 97 leads en attente depuis le 24/08, et 170 arrivés depuis le 11/08 qui n'ont reçu
+au mieux qu'une fin de séquence, dans le désordre.
 
 ## 3. Ce que tu dois automatiser en premier
 
-### № 1 — Transformer la séquence des 7 emails en automatisation Brevo (~1 h)
+### № 1 — Réparer le point d'entrée de l'Automatisation #4 (~15 min)
 
-Déclencheur : *contact ajouté à la liste 4, 7 ou 10* → les 7 emails s'enchaînent à J+0, J+2,
-J+4, J+6, J+8, J+10, J+13. Le contenu existe déjà (campagnes 12 à 20), il n'y a qu'à le
-recopier dans un workflow.
+Le workflow est construit, actif, ses emails sont écrits. Il n'y a rien à reconstruire :
+il faut corriger ce qu'il écoute.
 
-Pourquoi en premier : c'est le seul point où de l'argent se perd **par lead déjà capté**.
-Chaque inscrit depuis le 24 août est un prospect qui n'a jamais vu l'offre. Coût : une heure.
-Bénéfice : la séquence tourne pour toujours, sur chaque nouveau contact, sans toi.
+1. Ouvrir l'Automatisation #4 → premier bloc (point d'entrée) et onglet statistiques.
+   Si le compteur de contacts entrés est à 0 depuis le 24/08, le diagnostic est confirmé.
+2. Mettre l'entrée sur **« Un contact est ajouté à une liste » → liste 10**, la seule qui
+   reçoit du trafic. Retirer toute condition de double opt-in ou d'attribut placée avant
+   le premier email.
+3. **Rattrapage des 97.** Les déclencheurs d'entrée ne se déclenchent que sur des événements
+   nouveaux : corriger l'entrée ne rattrape pas rétroactivement les contacts déjà présents.
+   Créer une liste « Rattrapage août », y ajouter les contacts créés depuis le 24/08, et
+   inclure cette liste dans la condition d'entrée : ils parcourent alors toute la séquence
+   dans l'ordre, en commençant par l'email de bienvenue.
 
-À faire dans la foulée : renvoyer la séquence aux inscrits post-24/08, et brancher la liste 11
-(vide) sur la page VSL.
+Pourquoi en premier : c'est le seul point où de l'argent se perd **par lead déjà capté**, et
+le correctif se compte en minutes, pas en heures.
 
 ### № 2 — Reconstruire le scénario Make en déclencheur instantané (~1 h, à faire le même jour)
 
