@@ -1,0 +1,86 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #2c4068; font-family: "Nunito", sans-serif; }
+    .b7-abs { position: absolute; }
+    .b7-h { left: 80px; top: 220px; width: 920px; font-family: "Playfair Display", serif; font-weight: 700; font-size: 110px; line-height: 1.08; color: #fff; }
+    .b7-h b { color: #e5b567; font-weight: 700; }
+    #b7-phone { left: 364px; top: 560px; width: 352px; height: 705px; }
+    #b7-in { position: absolute; left: 0; top: 0; width: 470px; height: 940px; background: #0f1626; border-radius: 66px; transform: scale(0.75); transform-origin: 0 0; }
+    #b7-screen { position: absolute; left: 18px; top: 18px; width: 434px; height: 904px; border-radius: 50px; background: #fbfaf7; overflow: hidden; }
+    #b7-notch { position: absolute; left: 160px; top: 14px; width: 114px; height: 30px; border-radius: 15px; background: #0f1626; z-index: 5; }
+    #b7-track { position: absolute; left: 0; top: 0; width: 1302px; height: 790px; display: flex; }
+    .b7-page { position: relative; width: 434px; height: 790px; flex: none; }
+    .b7-ph { position: absolute; left: 0; top: 0; width: 100%; height: 160px; padding: 74px 28px 0; font-weight: 800; font-size: 34px; color: #fff; }
+    .b7-tiles { position: absolute; left: 24px; top: 190px; width: 386px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .b7-tiles i { height: 112px; border-radius: 16px; background: #fff; border: 2px solid #e7e2d5; position: relative; }
+    .b7-tiles i::after { content: ""; position: absolute; left: 18px; top: 18px; width: 36px; height: 36px; border-radius: 10px; background: #e5b567; }
+    .b7-nine { position: absolute; left: 28px; top: 600px; width: 380px; font-weight: 800; font-size: 38px; line-height: 1.2; color: #1b2130; }
+    .b7-bub { position: absolute; max-width: 340px; padding: 14px 20px; border-radius: 20px; font-size: 30px; line-height: 1.3; color: #1b2130; background: #fff; }
+    .b7-me { background: #d9fdd3; }
+    #b7-livecard { position: absolute; left: 24px; top: 200px; width: 386px; padding: 30px; background: #fff; border-left: 10px solid #e5b567; border-radius: 22px; box-shadow: 0 16px 34px -16px rgba(27,42,74,.45); }
+    #b7-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 20px; background: #fde8e8; font-weight: 800; font-size: 26px; color: #c62828; letter-spacing: .08em; }
+    #b7-badge i { width: 14px; height: 14px; border-radius: 50%; background: #e53935; }
+    .b7-lt { margin-top: 18px; font-weight: 800; font-size: 40px; line-height: 1.15; color: #1b2130; }
+    .b7-ld { margin-top: 12px; font-size: 30px; line-height: 1.35; color: #4a5467; }
+    #b7-tabs { position: absolute; left: 0; top: 790px; width: 100%; height: 114px; background: #fff; border-top: 2px solid #e7e2d5; display: flex; }
+    .b7-tab { flex: 1; text-align: center; padding-top: 20px; font-weight: 800; font-size: 24px; color: #9aa1b2; }
+    .b7-tab i { display: block; margin: 0 auto 8px; width: 34px; height: 34px; border-radius: 10px; background: #d5dbea; }
+    #b7-tab1 { color: #1b2a4a; }
+    #b7-tab1 i { background: #e5b567; }
+    .b7-tap { position: absolute; width: 110px; height: 110px; border-radius: 50%; border: 6px solid #e5b567; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="b7-inclus" data-width="1080" data-height="1920">
+    <div id="b7-h1" class="b7-abs b7-h">Boîte à outils <b>offerte</b></div>
+    <div id="b7-h2" class="b7-abs b7-h">Communauté <b>WhatsApp</b></div>
+    <div id="b7-h3" class="b7-abs b7-h"><b>1 live</b> par mois</div>
+    <div id="b7-phone" class="b7-abs">
+      <div id="b7-in">
+        <div id="b7-screen">
+          <div id="b7-notch"></div>
+          <div id="b7-track">
+            <div class="b7-page">
+              <div class="b7-ph" style="background:#1b2a4a">Ta boîte à outils</div>
+              <div class="b7-tiles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="b7-nine">Tous tes guides gratuits, réunis</div>
+            </div>
+            <div class="b7-page" style="background:#efe7dd">
+              <div class="b7-ph" style="background:#0b7a5f">Communauté</div>
+              <div class="b7-bub" style="left:20px;top:190px">Comment je fais un bon CV avec l'IA ?</div>
+              <div class="b7-bub" style="left:20px;top:350px">Regarde le parcours Carrière, tout y est expliqué !</div>
+              <div class="b7-bub b7-me" style="right:20px;top:560px">Merci ! 🙏</div>
+            </div>
+            <div class="b7-page">
+              <div class="b7-ph" style="background:#1b2a4a">Rendez-vous</div>
+              <div id="b7-livecard"><div id="b7-badge"><i></i>EN DIRECT</div><div class="b7-lt">Le live du mois</div><div class="b7-ld">Pose toutes tes questions, on y répond ensemble.</div></div>
+            </div>
+          </div>
+          <div id="b7-tabs">
+            <div id="b7-tab1" class="b7-tab"><i></i>Outils</div>
+            <div id="b7-tab2" class="b7-tab"><i></i>Communauté</div>
+            <div id="b7-tab3" class="b7-tab"><i></i>Live</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="b7-tap2" class="b7-tap" style="left:485px;top:1154px"></div>
+    <div id="b7-tap3" class="b7-tap" style="left:594px;top:1154px"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const show = (id, at, out) => {
+      tl.fromTo(id, { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, at);
+      if (out) tl.to(id, { opacity: 0, filter: "blur(10px)", duration: 0.15, ease: "power2.in" }, out);
+    };
+    show("#b7-h1", 0.1, 1.55); show("#b7-h2", 1.7, 3.05); show("#b7-h3", 3.18);
+    tl.fromTo("#b7-phone", { y: 1300 }, { y: 0, duration: 0.6, ease: "expo.out" }, 0);
+    tl.fromTo(".b7-tiles i", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(1.8)", stagger: 0.04 }, 0.3);
+    tl.fromTo("#b7-tap2", { opacity: 0.9, scale: 0.3 }, { opacity: 0, scale: 1.3, duration: 0.45 }, 1.62);
+    tl.to("#b7-track", { x: -434, duration: 0.35, ease: "power3.inOut" }, 1.65);
+    tl.set("#b7-tab1", { color: "#9aa1b2" }, 1.7); tl.set("#b7-tab2", { color: "#1b2a4a" }, 1.7);
+    tl.fromTo("#b7-tap3", { opacity: 0.9, scale: 0.3 }, { opacity: 0, scale: 1.3, duration: 0.45 }, 3.1);
+    tl.to("#b7-track", { x: -868, duration: 0.35, ease: "power3.inOut" }, 3.13);
+    tl.set("#b7-tab2", { color: "#9aa1b2" }, 3.18); tl.set("#b7-tab3", { color: "#1b2a4a" }, 3.18);
+    tl.fromTo("#b7-badge i", { opacity: 1 }, { opacity: 0.2, duration: 0.3, ease: "steps(1)", yoyo: true, repeat: 1 }, 3.4);
+    window.__timelines["b7-inclus"] = tl;
+  </script>
+</template>

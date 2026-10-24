@@ -1,0 +1,56 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #1b2a4a; font-family: "Nunito", sans-serif; }
+    .b1-abs { position: absolute; }
+    .b1-h { left: 80px; width: 940px; font-family: "Playfair Display", serif; font-weight: 700; font-size: 112px; line-height: 1.08; color: #fff; letter-spacing: -0.01em; }
+    #b1-h1, #b1-h2 { top: 220px; }
+    .b1-w { display: inline-block; position: relative; isolation: isolate; }
+    .b1-mark { position: absolute; left: -12px; right: -12px; top: 14%; bottom: 4%; background: #e5b567; border-radius: 10px; z-index: -1; transform-origin: 0 50%; }
+    .b1-dark { color: #1b2a4a; }
+    #b1-phone { left: 305px; top: 630px; width: 470px; height: 940px; }
+    #b1-in { position: absolute; left: 0; top: 0; width: 470px; height: 940px; background: #0f1626; border-radius: 66px; transform: scale(1); transform-origin: 0 0; }
+    #b1-screen { position: absolute; left: 18px; top: 18px; width: 434px; height: 904px; border-radius: 50px; background: #fff; overflow: hidden; }
+    #b1-notch { position: absolute; left: 160px; top: 14px; width: 114px; height: 30px; border-radius: 15px; background: #0f1626; }
+    #b1-app { position: absolute; left: 0; top: 70px; width: 100%; text-align: center; font-weight: 800; font-size: 30px; color: #1b2130; }
+    #b1-hello { position: absolute; left: 30px; top: 300px; width: 374px; text-align: center; font-weight: 700; font-size: 36px; line-height: 1.3; color: #4a5467; }
+    #b1-wall { position: absolute; left: 30px; top: 130px; width: 374px; }
+    #b1-wall i { display: block; height: 14px; margin-bottom: 13px; border-radius: 7px; background: #c9ced9; transform-origin: 0 50%; }
+  </style>
+  <div id="root" data-composition-id="b1-age" data-width="1080" data-height="1920">
+    <div id="b1-h1" class="b1-abs b1-h">
+      <span id="b1-a1" class="b1-w">Tu</span> <span id="b1-a2" class="b1-w">as</span><br />
+      <span id="b1-a3" class="b1-w b1-dark"><i id="b1-m1" class="b1-mark"></i>40, 50 ans</span><br />
+      <span id="b1-a4" class="b1-w">ou</span> <span id="b1-a5" class="b1-w">plus ?</span>
+    </div>
+    <div id="b1-h2" class="b1-abs b1-h">
+      <span id="b1-c1" class="b1-w">L'IA</span> <span id="b1-c2" class="b1-w">te</span> <span id="b1-c3" class="b1-w">semble</span><br />
+      <span id="b1-c4" class="b1-w">trop</span><br />
+      <span id="b1-c5" class="b1-w b1-dark"><i id="b1-m2" class="b1-mark"></i>compliquée ?</span>
+    </div>
+    <div id="b1-phone" class="b1-abs" data-layout-allow-overflow>
+      <div id="b1-in">
+        <div id="b1-screen">
+          <div id="b1-notch"></div>
+          <div id="b1-app">Assistant IA</div>
+          <div id="b1-hello">Comment puis-je vous aider ?</div>
+          <div id="b1-wall" data-layout-ignore>
+            <i style="width:96%"></i><i style="width:88%"></i><i style="width:100%"></i><i style="width:72%"></i><i style="width:94%"></i><i style="width:100%"></i><i style="width:81%"></i><i style="width:97%"></i><i style="width:64%"></i><i style="width:99%"></i><i style="width:90%"></i><i style="width:100%"></i><i style="width:77%"></i><i style="width:95%"></i><i style="width:86%"></i><i style="width:100%"></i><i style="width:70%"></i><i style="width:93%"></i><i style="width:98%"></i><i style="width:60%"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const blurIn = (id, at) => tl.fromTo(id, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, at);
+    [["#b1-a1", 0], ["#b1-a2", 0.1], ["#b1-a3", 0.75], ["#b1-a4", 2.2], ["#b1-a5", 2.4]].forEach(([id, at]) => blurIn(id, at));
+    tl.fromTo("#b1-m1", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, 0.8);
+    tl.to("#b1-h1", { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in" }, 3.25);
+    [["#b1-c1", 3.45], ["#b1-c2", 3.75], ["#b1-c3", 3.95], ["#b1-c4", 4.28], ["#b1-c5", 4.6]].forEach(([id, at]) => blurIn(id, at));
+    tl.fromTo("#b1-m2", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, 4.65);
+    tl.fromTo("#b1-phone", { y: 160, rotation: 4 }, { y: 0, rotation: 0, duration: 1.1, ease: "expo.out" }, 0);
+    tl.to("#b1-hello", { opacity: 0, duration: 0.15 }, 4.5);
+    tl.fromTo("#b1-wall i", { scaleX: 0 }, { scaleX: 1, duration: 0.18, ease: "power2.out", stagger: 0.035 }, 4.55);
+    window.__timelines["b1-age"] = tl;
+  </script>
+</template>

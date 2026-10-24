@@ -1,0 +1,24 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #fdf7ea; font-family: "Playfair Display", serif; }
+    .b9-line { position: absolute; left: 0; width: 1080px; text-align: center; font-weight: 700; font-size: 170px; color: #1b2130; white-space: nowrap; letter-spacing: -0.01em; }
+    #b9-l1 { top: 380px; }
+    #b9-l2 { top: 600px; }
+    #b9-l3 { top: 820px; }
+    .b9-w { display: inline-block; position: relative; isolation: isolate; }
+    #b9-mark { position: absolute; left: -18px; right: -18px; top: 18%; bottom: 2%; background: #e5b567; border-radius: 14px; z-index: -1; transform-origin: 0 50%; }
+  </style>
+  <div id="root" data-composition-id="b9-jamais" data-width="1080" data-height="1920">
+    <div id="b9-l1" class="b9-line"><span id="b9-w1" class="b9-w">Il</span> <span id="b9-w2" class="b9-w">n'est</span></div>
+    <div id="b9-l2" class="b9-line"><span id="b9-w3" class="b9-w"><i id="b9-mark"></i>jamais</span></div>
+    <div id="b9-l3" class="b9-line"><span id="b9-w4" class="b9-w">trop</span> <span id="b9-w5" class="b9-w">tard.</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    [["#b9-w1", 0.08], ["#b9-w2", 0.2], ["#b9-w3", 0.3], ["#b9-w4", 0.6], ["#b9-w5", 0.9]].forEach(([id, at]) => {
+      tl.fromTo(id, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power2.out" }, at);
+    });
+    tl.fromTo("#b9-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, 0.38);
+    window.__timelines["b9-jamais"] = tl;
+  </script>
+</template>

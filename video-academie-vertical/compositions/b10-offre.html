@@ -1,0 +1,63 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #1b2a4a; font-family: "Nunito", sans-serif; }
+    .b10-abs { position: absolute; }
+    #b10-card { left: 90px; top: 300px; width: 900px; height: 760px; background: #fff; border-radius: 40px; box-shadow: 0 40px 90px -30px rgba(0,0,0,.6); text-align: center; }
+    #b10-eye { position: absolute; left: 0; top: 64px; width: 100%; font-weight: 800; font-size: 36px; letter-spacing: .18em; color: #c9953f; }
+    #b10-price { position: absolute; left: 0; top: 130px; width: 100%; font-family: "Playfair Display", serif; font-weight: 700; font-size: 230px; line-height: 1; color: #1b2a4a; }
+    #b10-once { position: absolute; left: 0; top: 380px; width: 100%; font-weight: 800; font-size: 52px; color: #1b2130; }
+    #b10-once2 { position: absolute; left: 0; top: 452px; width: 100%; font-size: 36px; color: #4a5467; }
+    #b10-btn { position: absolute; left: 110px; top: 560px; width: 680px; height: 124px; border-radius: 62px; background: #1b2a4a; color: #fff; font-weight: 800; font-size: 48px; display: flex; align-items: center; justify-content: center; }
+    #b10-stamp { left: 560px; top: 200px; padding: 22px 34px; border-radius: 22px; background: #e5b567; color: #1b2a4a; font-weight: 800; font-size: 42px; line-height: 1.2; text-align: center; box-shadow: 0 20px 40px -14px rgba(0,0,0,.5); }
+    #b10-af { left: 60px; top: 1110px; width: 960px; text-align: center; font-weight: 700; font-size: 38px; line-height: 1.3; color: #9fb0d4; }
+    #b10-cursor { left: 800px; top: 1500px; width: 90px; height: 108px; }
+    #b10-end { left: 0; top: 0; width: 1080px; height: 1920px; background: #1b2a4a; opacity: 0; }
+    #b10-tile { position: absolute; left: 445px; top: 420px; width: 190px; height: 190px; border-radius: 40px; background: linear-gradient(145deg, #f0cf9a, #c9953f); }
+    #b10-tile span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Playfair Display", serif; font-weight: 700; font-size: 130px; color: #1b2a4a; line-height: 1; padding-bottom: 10px; }
+    #b10-word { position: absolute; left: 0; top: 660px; width: 1080px; text-align: center; font-family: "Playfair Display", serif; font-weight: 700; font-size: 104px; color: #fff; white-space: nowrap; }
+    #b10-url { position: absolute; left: 70px; top: 880px; width: 940px; height: 116px; border-radius: 58px; border: 3px solid #e5b567; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 42px; color: #fff; white-space: nowrap; }
+    #b10-caret { display: inline-block; width: 4px; height: 48px; margin-left: 4px; background: #e5b567; }
+  </style>
+  <div id="root" data-composition-id="b10-offre" data-width="1080" data-height="1920">
+    <div id="b10-card" class="b10-abs">
+      <div id="b10-eye">★ OFFRE FONDATEUR</div>
+      <div id="b10-price">19 €</div>
+      <div id="b10-once">une fois = 12 mois d'accès</div>
+      <div id="b10-once2">Paiement unique, sans abonnement</div>
+      <div id="b10-btn">Je prends ma place →</div>
+    </div>
+    <div id="b10-stamp" class="b10-abs">50 places<br />jusqu'au 10 novembre</div>
+    <div id="b10-af" class="b10-abs">Afrique francophone :<br />5 000 FCFA pour 12 mois</div>
+    <svg id="b10-cursor" class="b10-abs" viewBox="0 0 84 100"><path d="M6 4 L6 82 L26 64 L40 96 L56 89 L42 58 L70 58 Z" fill="#fff" stroke="#1b2130" stroke-width="6" stroke-linejoin="round" /></svg>
+    <div id="b10-end" class="b10-abs">
+      <div id="b10-tile"><span>R</span></div>
+      <div id="b10-word">Réussir avec l'IA</div>
+      <div id="b10-url"><span id="b10-typed"></span><i id="b10-caret"></i></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#b10-card", { y: 1300, rotation: 5 }, { y: 0, rotation: 0, duration: 0.7, ease: "expo.out" }, 0);
+    tl.fromTo("#b10-eye", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.2);
+    tl.fromTo("#b10-price", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 1.15);
+    tl.fromTo("#b10-once", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 2.05);
+    tl.fromTo("#b10-once2", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 2.6);
+    tl.fromTo("#b10-btn", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 2.9);
+    tl.fromTo("#b10-stamp", { opacity: 0, scale: 2.2, rotation: -24 }, { opacity: 1, scale: 1, rotation: 8, duration: 0.3, ease: "power4.in" }, 3.85);
+    tl.fromTo("#b10-af", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 5.0);
+    tl.fromTo("#b10-cursor", { x: 0, y: 0 }, { x: -266, y: -580, duration: 0.7, ease: "power3.out" }, 6.0);
+    tl.to("#b10-cursor", { scale: 0.85, duration: 0.08, yoyo: true, repeat: 1 }, 6.8);
+    tl.to("#b10-btn", { scale: 0.95, backgroundColor: "#2c4068", duration: 0.08, yoyo: true, repeat: 1 }, 6.8);
+    tl.fromTo("#b10-end", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.inOut" }, 7.3);
+    tl.set(["#b10-card", "#b10-stamp", "#b10-af", "#b10-cursor"], { opacity: 0 }, 7.6);
+    tl.fromTo("#b10-tile", { y: -600, rotation: -15 }, { y: 0, rotation: 0, duration: 0.6, ease: "back.out(1.4)" }, 7.4);
+    tl.fromTo("#b10-word", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.55, ease: "power3.out" }, 7.7);
+    tl.fromTo("#b10-url", { opacity: 0, scaleX: 0.2 }, { opacity: 1, scaleX: 1, duration: 0.4, ease: "power3.out" }, 8.1);
+    const url = "academiereussiraveclia.netlify.app";
+    const typed = document.querySelector("#b10-typed");
+    const t = { n: 0 };
+    tl.fromTo(t, { n: 0 }, { n: url.length, duration: 1.1, ease: "none", onUpdate: () => { typed.textContent = url.slice(0, Math.round(t.n)); } }, 8.5);
+    tl.fromTo("#b10-caret", { opacity: 1 }, { opacity: 0, duration: 0.35, ease: "steps(1)", yoyo: true, repeat: 3 }, 9.6);
+    window.__timelines["b10-offre"] = tl;
+  </script>
+</template>

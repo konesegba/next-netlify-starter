@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #e5b567; font-family: "Nunito", sans-serif; }
+    .b3-abs { position: absolute; }
+    #b3-q { left: 80px; top: 230px; width: 920px; font-weight: 800; font-size: 64px; line-height: 1.2; color: #1b2a4a; }
+    #b3-big { left: 70px; top: 420px; font-family: "Playfair Display", serif; font-weight: 700; font-size: 176px; line-height: 1; color: #1b2a4a; white-space: nowrap; }
+    .b3-step { position: absolute; width: 150px; background: #1b2a4a; border-radius: 12px 12px 0 0; transform-origin: 50% 100%; }
+    #b3-dot { left: 340px; top: 1110px; width: 70px; height: 70px; border-radius: 50%; background: #fdf7ea; }
+    #b3-iris { left: 0; top: 0; width: 1080px; height: 1920px; background: #1b2a4a; }
+  </style>
+  <div id="root" data-composition-id="b3-pas" data-width="1080" data-height="1920">
+    <div id="b3-q" class="b3-abs">Et si on avançait ensemble…</div>
+    <div id="b3-big" class="b3-abs">pas à pas.</div>
+    <div id="b3-stairs" data-layout-allow-overlap>
+      <div id="b3-s1" class="b3-step" style="left:300px;top:1180px;height:740px"></div>
+      <div id="b3-s2" class="b3-step" style="left:450px;top:1060px;height:860px"></div>
+      <div id="b3-s3" class="b3-step" style="left:600px;top:940px;height:980px"></div>
+      <div id="b3-s4" class="b3-step" style="left:750px;top:820px;height:1100px"></div>
+      <div id="b3-s5" class="b3-step" style="left:900px;top:700px;height:1220px"></div>
+    </div>
+    <div id="b3-dot" class="b3-abs"></div>
+    <div id="b3-iris" class="b3-abs"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#b3-q", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0.12);
+    for (let i = 1; i <= 5; i++) tl.fromTo("#b3-s" + i, { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "back.out(1.6)" }, 0.15 + (i - 1) * 0.18);
+    const hops = [[0, 0], [150, -120], [300, -240], [450, -360], [600, -480]];
+    hops.forEach(([x, y], i) => tl.to("#b3-dot", { x, y, duration: 0.2, ease: "power2.out" }, 0.5 + i * 0.27));
+    tl.fromTo("#b3-dot", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.4);
+    tl.fromTo("#b3-big", { opacity: 0, y: 40, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: "expo.out" }, 1.55);
+    tl.fromTo("#b3-iris", { clipPath: "circle(0px at 975px 665px)" }, { clipPath: "circle(2300px at 975px 665px)", duration: 0.45, ease: "power3.in" }, 2.05);
+    window.__timelines["b3-pas"] = tl;
+  </script>
+</template>
