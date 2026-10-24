@@ -1,0 +1,36 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #fdf7ea; font-family: "Nunito", sans-serif; }
+    .b5-abs { position: absolute; }
+    #b5-three { left: 130px; top: 150px; font-family: "Playfair Display", serif; font-weight: 700; font-size: 420px; line-height: 1; color: #e5b567; }
+    #b5-label { left: 140px; top: 600px; font-family: "Playfair Display", serif; font-weight: 700; font-size: 110px; color: #1b2130; }
+    #b5-sub { left: 144px; top: 750px; width: 640px; font-size: 40px; line-height: 1.35; color: #4a5467; }
+    .b5-card { position: absolute; left: 930px; top: 260px; width: 860px; height: 560px; padding: 56px 60px; background: #fff; border: 2px solid #e7e2d5; border-radius: 30px; box-shadow: 0 30px 70px -30px rgba(27,42,74,.5); transform-origin: 50% 0%; }
+    .b5-num { font-family: "Playfair Display", serif; font-weight: 700; font-size: 84px; line-height: 1; color: #c9953f; }
+    .b5-t { margin-top: 22px; font-weight: 800; font-size: 54px; line-height: 1.12; color: #1b2130; }
+    .b5-d { margin-top: 20px; font-size: 34px; line-height: 1.4; color: #4a5467; }
+    .b5-tag { display: inline-block; margin-top: 26px; padding: 12px 26px; border-radius: 30px; background: #fbefd6; font-weight: 800; font-size: 30px; color: #7a5d1a; }
+  </style>
+  <div id="root" data-composition-id="b5-parcours" data-width="1920" data-height="1080">
+    <div id="b5-three" class="b5-abs">3</div>
+    <div id="b5-label" class="b5-abs">parcours</div>
+    <div id="b5-sub" class="b5-abs">Trois chemins, selon là où tu en es.</div>
+    <div id="b5-stack" data-layout-allow-overlap>
+      <div id="b5-k1" class="b5-card"><div class="b5-num">01</div><div class="b5-t">Carrière &amp; emploi avec l'IA</div><div class="b5-d">Sécurise ton poste, booste ton CV et ton LinkedIn, prépare tes entretiens.</div><div class="b5-tag">Idéal si tu es en poste</div></div>
+      <div id="b5-k2" class="b5-card"><div class="b5-num">02</div><div class="b5-t">Réussir sa reconversion</div><div class="b5-d">La méthode complète pour changer de voie après 40 ans, sans tout risquer.</div><div class="b5-tag">Idéal si tu veux changer de vie</div></div>
+      <div id="b5-k3" class="b5-card"><div class="b5-num">03</div><div class="b5-t">Créer ton activité / freelance</div><div class="b5-d">De l'idée au premier client : crée et vends ton produit ou ton service grâce à l'IA.</div><div class="b5-tag">Idéal si tu veux entreprendre</div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#b5-three", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.05);
+    tl.fromTo("#b5-label", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0.2);
+    tl.fromTo("#b5-sub", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5);
+    const enter = (id, at) => tl.fromTo(id, { x: 1100, rotation: 8 }, { x: 0, rotation: 0, duration: 0.6, ease: "expo.out" }, at);
+    const back = (id, at, depth) => tl.to(id, { y: -60 * depth, scale: 1 - 0.07 * depth, filter: "blur(" + 3 * depth + "px)", opacity: 1 - 0.3 * depth, duration: 0.4, ease: "power2.out" }, at);
+    enter("#b5-k1", 1.1);
+    back("#b5-k1", 2.5, 1); enter("#b5-k2", 2.5);
+    back("#b5-k1", 4.0, 2); back("#b5-k2", 4.0, 1); enter("#b5-k3", 4.0);
+    window.__timelines["b5-parcours"] = tl;
+  </script>
+</template>
