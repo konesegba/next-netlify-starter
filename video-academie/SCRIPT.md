@@ -1,6 +1,7 @@
 # Vidéo « Martine » – Académie Réussir avec l'IA
 
-Voix : Nico (ElevenLabs, id MAZdzkb78f8SA7DNBT41), modèle eleven_v4. Durée visée : 50–60 s, 1920×1080.
+Voix : Nico (ElevenLabs, id MAZdzkb78f8SA7DNBT41), modèle Eleven v4, générée via Flora (projet « Vidéo Académie Réussir avec l'IA – audio »).
+Musique : Lyria 3.5 via Flora. Fichiers : assets/audio/voix.mp3 et assets/audio/musique.mp3. Vidéo : 55 s, 1920×1080.
 
 | # | Scène | Voix off |
 |---|-------|----------|

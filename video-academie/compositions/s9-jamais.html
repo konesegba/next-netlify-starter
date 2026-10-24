@@ -1,0 +1,24 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #faf7f0; font-family: "Playfair Display", serif; }
+    .s9-line { position: absolute; left: 0; width: 1920px; text-align: center; font-weight: 700; color: #1b2233; letter-spacing: -0.01em; white-space: nowrap; }
+    #s9-l1 { top: 250px; font-size: 190px; }
+    #s9-l2 { top: 500px; font-size: 230px; }
+    .s9-w { display: inline-block; }
+    #s9-gold { color: #c99542; }
+  </style>
+  <div id="root" data-composition-id="s9-jamais" data-width="1920" data-height="1080">
+    <div id="s9-l1" class="s9-line"><span id="s9-w1" class="s9-w">Il</span> <span id="s9-w2" class="s9-w">n'est</span> <span id="s9-gold" class="s9-w">jamais</span></div>
+    <div id="s9-l2" class="s9-line"><span id="s9-w4" class="s9-w">trop</span> <span id="s9-w5" class="s9-w">tard.</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const ids = ["#s9-w1", "#s9-w2", "#s9-gold", "#s9-w4", "#s9-w5"];
+    const at = [0.2, 0.32, 0.5, 0.95, 1.12];
+    ids.forEach((id, i) => {
+      tl.fromTo(id, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, at[i]);
+    });
+    tl.fromTo("#s9-gold", { scale: 1 }, { scale: 1.08, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 0.62);
+    window.__timelines["s9-jamais"] = tl;
+  </script>
+</template>

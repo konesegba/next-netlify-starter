@@ -1,0 +1,50 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #ffffff; font-family: "Nunito", sans-serif; }
+    .s3-abs { position: absolute; }
+    #s3-flood { left: 0; top: 0; width: 1920px; height: 1080px; background: #1f2d4f; opacity: 0; }
+    #s3-bar { left: 0; top: 0; width: 1920px; height: 60px; background: #eef0f4; }
+    .s3-dot { position: absolute; top: -9px; width: 33px; height: 33px; border-radius: 50%; background: #c9ced9; }
+    #s3-pill { left: 300px; top: 820px; width: 1320px; height: 130px; border: 3px solid #d5d9e2; border-radius: 65px; background: #fff; }
+    #s3-ph { position: absolute; left: 72px; top: 34px; font-size: 44px; font-weight: 600; color: #9aa1b2; }
+    .s3-step { position: absolute; width: 150px; background: #d9a85b; border-top: 14px solid #b9843a; border-radius: 10px 10px 0 0; transform-origin: 50% 100%; }
+    #s3-tile { left: 355px; top: 430px; width: 220px; height: 220px; border-radius: 44px; background: linear-gradient(145deg, #e8bd6e, #b9843a); box-shadow: 0 24px 50px rgba(0,0,0,.35); }
+    #s3-tile span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Playfair Display", serif; font-weight: 700; font-size: 150px; color: #1f2d4f; line-height: 1; padding-bottom: 12px; }
+    #s3-eyebrow { left: 618px; top: 400px; font-weight: 800; font-size: 34px; letter-spacing: 0.18em; color: #d9a85b; }
+    #s3-word { left: 610px; top: 450px; font-family: "Playfair Display", serif; font-weight: 700; font-size: 120px; color: #ffffff; white-space: nowrap; line-height: 1.1; }
+  </style>
+  <div id="root" data-composition-id="s3-bienvenue" data-width="1920" data-height="1080">
+    <div id="s3-white" class="s3-abs" style="left:0;top:0;width:1920px;height:1080px">
+      <div id="s3-bar" class="s3-abs"><i class="s3-dot" style="left:13px"></i><i class="s3-dot" style="left:67px"></i><i class="s3-dot" style="left:120px"></i></div>
+      <div id="s3-stairs" data-layout-allow-overlap>
+        <div id="s3-st1" class="s3-step" style="left:300px;top:720px;height:70px"></div>
+        <div id="s3-st2" class="s3-step" style="left:460px;top:650px;height:140px"></div>
+        <div id="s3-st3" class="s3-step" style="left:620px;top:580px;height:210px"></div>
+        <div id="s3-st4" class="s3-step" style="left:780px;top:510px;height:280px"></div>
+        <div id="s3-st5" class="s3-step" style="left:940px;top:440px;height:350px"></div>
+        <div id="s3-st6" class="s3-step" style="left:1100px;top:370px;height:420px"></div>
+        <div id="s3-st7" class="s3-step" style="left:1260px;top:300px;height:490px"></div>
+      </div>
+    </div>
+    <div id="s3-flood" class="s3-abs"></div>
+    <div id="s3-pill" class="s3-abs"><span id="s3-ph">Écris ton message…</span></div>
+    <div id="s3-tile" class="s3-abs"><span>R</span></div>
+    <div id="s3-eyebrow" class="s3-abs">BIENVENUE DANS</div>
+    <div id="s3-word" class="s3-abs">Réussir avec l'IA</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    for (let i = 1; i <= 7; i++) {
+      tl.fromTo("#s3-st" + i, { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "back.out(1.5)" }, 0.35 + (i - 1) * 0.27);
+    }
+    tl.to("#s3-ph", { opacity: 0, duration: 0.15 }, 2.55);
+    tl.to("#s3-pill", { x: -495, y: -345, scaleX: 0.167, scaleY: 1.69, backgroundColor: "#d9a85b", borderColor: "#d9a85b", duration: 0.35, ease: "power3.inOut" }, 2.6);
+    tl.to("#s3-white", { opacity: 0, filter: "blur(14px)", duration: 0.3, ease: "power2.in" }, 2.6);
+    tl.fromTo("#s3-flood", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 2.7);
+    tl.fromTo("#s3-tile", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power2.out" }, 2.9);
+    tl.to("#s3-pill", { opacity: 0, duration: 0.1 }, 3.0);
+    tl.fromTo("#s3-eyebrow", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 2.95);
+    tl.fromTo("#s3-word", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power3.out" }, 3.15);
+    window.__timelines["s3-bienvenue"] = tl;
+  </script>
+</template>

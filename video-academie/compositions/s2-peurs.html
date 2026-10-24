@@ -1,0 +1,46 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #ffffff; font-family: "Nunito", sans-serif; }
+    .s2-abs { position: absolute; }
+    #s2-bar { left: 0; top: 0; width: 1920px; height: 60px; background: #eef0f4; }
+    .s2-dot { position: absolute; top: -9px; width: 33px; height: 33px; border-radius: 50%; background: #c9ced9; }
+    #s2-input { left: 300px; top: 820px; width: 1320px; height: 130px; border: 3px solid #d5d9e2; border-radius: 65px; background: #fff; }
+    #s2-ph { position: absolute; left: 72px; top: 34px; font-size: 44px; font-weight: 600; color: #9aa1b2; }
+    .s2-tag { position: absolute; padding: 18px 34px; background: #fff; border: 4px solid #1f2d4f; border-radius: 16px; font-weight: 800; font-size: 46px; color: #1f2d4f; white-space: nowrap; box-shadow: 0 12px 0 #1f2d4f; }
+    .s2-tag.alt { background: #1f2d4f; color: #fff; box-shadow: 0 12px 0 #0f1830; }
+    #s2-line { left: 0; top: 380px; width: 1920px; text-align: center; font-family: "Playfair Display", serif; font-weight: 700; font-size: 150px; color: #1b2233; letter-spacing: -0.01em; }
+  </style>
+  <div id="root" data-composition-id="s2-peurs" data-width="1920" data-height="1080">
+    <div id="s2-bar" class="s2-abs"><i class="s2-dot" style="left:13px"></i><i class="s2-dot" style="left:67px"></i><i class="s2-dot" style="left:120px"></i></div>
+    <div id="s2-input" class="s2-abs"><span id="s2-ph">Écris ton message…</span></div>
+    <div id="s2-tags" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s2-t1" class="s2-tag" style="left:180px;top:150px">Prompt</div>
+      <div id="s2-t2" class="s2-tag alt" style="left:1350px;top:120px">LLM</div>
+      <div id="s2-t3" class="s2-tag" style="left:760px;top:250px">Tokens</div>
+      <div id="s2-t4" class="s2-tag" style="left:1240px;top:430px">Machine learning</div>
+      <div id="s2-t5" class="s2-tag alt" style="left:220px;top:480px">API</div>
+      <div id="s2-t6" class="s2-tag" style="left:560px;top:620px">Paramètres</div>
+      <div id="s2-t7" class="s2-tag alt" style="left:1100px;top:640px">Agents IA</div>
+      <div id="s2-t8" class="s2-tag" style="left:470px;top:330px">Fine-tuning</div>
+      <div id="s2-t9" class="s2-tag" style="left:1500px;top:260px">Algorithme</div>
+      <div id="s2-t10" class="s2-tag alt" style="left:120px;top:660px">Modèles</div>
+      <div id="s2-t11" class="s2-tag" style="left:900px;top:470px">Plugins</div>
+      <div id="s2-t12" class="s2-tag alt" style="left:1560px;top:600px">GPT</div>
+    </div>
+    <div id="s2-line" class="s2-abs">Pas pour moi…</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const rot = [-6, 5, -3, 4, -7, 3, -4, 6, -5, 7, -2, 5];
+    for (let i = 0; i < 12; i++) {
+      const at = i < 5 ? 0.2 + i * 0.1 : 1.75 + (i - 5) * 0.06;
+      tl.fromTo("#s2-t" + (i + 1), { opacity: 0, scale: 0.3, rotation: 0 }, { opacity: 1, scale: 1, rotation: rot[i], duration: 0.45, ease: "back.out(1.8)" }, at);
+      tl.to("#s2-t" + (i + 1), { y: 1100, rotation: rot[i] * 4, duration: 0.6, ease: "power3.in" }, 2.85 + (i % 6) * 0.04);
+    }
+    tl.to("#s2-ph", { opacity: 0.35, duration: 0.3 }, 0.3);
+    tl.fromTo("#s2-line", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 3.35);
+    tl.to("#s2-line", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 4.95);
+    tl.to("#s2-ph", { opacity: 1, duration: 0.3 }, 4.9);
+    window.__timelines["s2-peurs"] = tl;
+  </script>
+</template>

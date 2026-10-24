@@ -1,0 +1,62 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #1f2d4f; font-family: "Nunito", sans-serif; }
+    .s5-abs { position: absolute; }
+    #s5-cream { left: 0; top: 0; width: 1920px; height: 1080px; background: #faf7f0; }
+    #s5-head { left: 160px; top: 120px; font-family: "Playfair Display", serif; font-weight: 700; font-size: 84px; color: #1b2233; line-height: 1.1; }
+    #s5-head-sub { left: 164px; top: 330px; width: 520px; font-size: 38px; line-height: 1.4; color: #4b5563; }
+    .s5-card { position: absolute; left: 860px; top: 70px; width: 860px; height: 940px; background: #fff; border: 2px solid #e7e2d6; border-radius: 34px; overflow: hidden; box-shadow: 0 26px 60px rgba(31,45,79,.16); }
+    .s5-band { position: absolute; left: 0; top: 0; width: 100%; height: 230px; background: #45506c; }
+    .s5-num { position: absolute; left: 0; top: 40px; width: 100%; text-align: center; font-family: "Playfair Display", serif; font-weight: 700; font-size: 120px; color: #d9b77a; }
+    .s5-body { position: absolute; left: 56px; top: 280px; width: 750px; }
+    .s5-eyebrow { font-weight: 800; font-size: 30px; letter-spacing: 0.14em; color: #8a6420; }
+    .s5-title { margin-top: 16px; font-weight: 800; font-size: 50px; line-height: 1.15; color: #1b2233; }
+    .s5-desc { margin-top: 18px; font-size: 34px; line-height: 1.4; color: #4b5563; }
+    .s5-li { margin-top: 16px; font-size: 32px; color: #374151; display: flex; gap: 16px; }
+    .s5-li b { color: #8a6420; }
+    .s5-meta { margin-top: 26px; font-size: 30px; font-weight: 700; color: #6b7280; }
+    #s5-u { position: absolute; left: 0; top: 0; height: 8px; background: #d9a85b; border-radius: 4px; transform-origin: 0 50%; }
+  </style>
+  <div id="root" data-composition-id="s5-formations" data-width="1920" data-height="1080">
+    <div id="s5-cream" class="s5-abs"></div>
+    <div id="s5-head" class="s5-abs">Tes<br />formations</div>
+    <div id="s5-head-sub" class="s5-abs">Concrètes, pas à pas, pensées pour les 40 ans et plus.</div>
+    <div id="s5-card1" class="s5-card">
+      <div class="s5-band"><div class="s5-num">01</div></div>
+      <div class="s5-body">
+        <div class="s5-eyebrow">RECONVERSION</div>
+        <div class="s5-title"><span id="s5-hl" style="position:relative;display:inline-block">Reconversion 40/50<span id="s5-u" style="top:62px;width:100%"></span></span> : la méthode IA</div>
+        <div class="s5-desc">Le programme complet pour changer de voie après 40 ans, étape par étape.</div>
+        <div class="s5-li"><b>✓</b>Identifier ta nouvelle voie avec l'IA</div>
+        <div class="s5-li"><b>✓</b>Bâtir ton plan de reconversion pas à pas</div>
+        <div class="s5-meta">83 pages · parcours 5 sem.</div>
+      </div>
+    </div>
+    <div id="s5-card2" class="s5-card">
+      <div class="s5-band"><div class="s5-num">02</div></div>
+      <div class="s5-body">
+        <div class="s5-eyebrow">CARRIÈRE</div>
+        <div class="s5-title">CV &amp; LinkedIn boostés par l'IA</div>
+        <div class="s5-desc">Réécris ton CV et ton profil LinkedIn pour sortir du lot, avec l'IA.</div>
+        <div id="s5-c1" class="s5-li"><b>✓</b>Réécrire ton CV pour qu'il sorte du lot</div>
+        <div id="s5-c2" class="s5-li"><b>✓</b>Optimiser ton profil LinkedIn avec l'IA</div>
+        <div id="s5-c3" class="s5-li"><b>✓</b>Préparer tes entretiens et tes réponses</div>
+        <div class="s5-meta">28 pages · 3h</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s5-cream", { clipPath: "circle(0% at 1290px 540px)" }, { clipPath: "circle(150% at 1290px 540px)", duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo("#s5-card1", { x: 900, rotation: 6 }, { x: 0, rotation: 0, duration: 0.8, ease: "expo.out" }, 0.1);
+    tl.fromTo("#s5-head", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25 }, 0.35);
+    tl.fromTo("#s5-head-sub", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.6);
+    tl.fromTo("#s5-u", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 1.6);
+    tl.to("#s5-card1", { x: -1700, rotation: -8, duration: 0.45, ease: "power3.in" }, 3.2);
+    tl.fromTo("#s5-card2", { x: 1100, rotation: 6 }, { x: 0, rotation: 0, duration: 0.8, ease: "expo.out" }, 3.35);
+    tl.fromTo("#s5-c1", { opacity: 0.25 }, { opacity: 1, duration: 0.2 }, 3.7);
+    tl.fromTo("#s5-c2", { opacity: 0.25 }, { opacity: 1, duration: 0.2 }, 3.95);
+    tl.fromTo("#s5-c3", { opacity: 0.25 }, { opacity: 1, duration: 0.2 }, 4.2);
+    window.__timelines["s5-formations"] = tl;
+  </script>
+</template>
